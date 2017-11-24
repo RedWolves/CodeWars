@@ -2,6 +2,7 @@ let assert        = require('assert');
 let squareDigits  = require('../kata/squareDigits/squareDigits');
 let validatePIN   = require('../kata/validatePIN/validatePIN');
 let getMiddle     = require('../kata/getMiddle/getMiddle');
+let isValidWalk   = require('../kata/isValidWalk/isValidWalk');
 
 describe("squareDigits", function() {
   it("Should equal 811181", function() {
@@ -62,7 +63,7 @@ describe("validatePIN", function () {
   })
 });
 
-describe.only("getMiddle", function() {
+describe("getMiddle", function() {
   
   it("'test' Middle equals 'es'", function() {
     assert.equal(getMiddle("test"), "es");
@@ -78,5 +79,35 @@ describe.only("getMiddle", function() {
 
   it("'A' Middle equals 'A'", function() {
     assert.equal(getMiddle("A"), "A");
+  });
+});
+
+describe.only("isValidWalk", function() {
+  describe("should only return true", function() {
+    it("['n','s','n','s','n','s','n','s','n','s']", function() {
+      assert.equal(isValidWalk(['n','s','n','s','n','s','n','s','n','s']), true);
+    });
+  });
+
+  describe("should return false", function() {
+    it("['w','e','w','e','w','e','w','e','w','e','w','e']", function() {
+      assert.equal(isValidWalk(['w','e','w','e','w','e','w','e','w','e','w','e']), false);
+    });
+
+    it("['w']", function() {
+      assert.equal(isValidWalk(['w']), false);
+    });
+
+    it("['n','n','n','s','n','s','n','s','n','s']", function() {
+      assert.equal(isValidWalk(['n','n','n','s','n','s','n','s','n','s']), false);
+    });
+
+    it("10 minute walk", function() {
+      assert.equal(isValidWalk("10 minute walk"), false);
+    });
+
+    it("['n','s','n','s','n','s','n','s','a','b']", function() {
+      assert.equal(isValidWalk(['n','s','n','s','n','s','n','s','a','b']), false);
+    });
   });
 });
