@@ -82,7 +82,7 @@ describe("getMiddle", function() {
   });
 });
 
-describe.only("isValidWalk", function() {
+describe("isValidWalk", function() {
   describe("should only return true", function() {
     it("['n','s','n','s','n','s','n','s','n','s']", function() {
       assert.equal(isValidWalk(['n','s','n','s','n','s','n','s','n','s']), true);
